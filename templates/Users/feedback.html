@@ -1,0 +1,79 @@
+{% extends 'Users/ui.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Transaction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0">Feedback</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" action="/addfeedback">
+
+
+
+                            <div class="mb-3">
+                                <label for="amount" class="form-label">Feedback</label>
+                                <input type="text" class="form-control" name="fbk" placeholder="Enter Feedback" value="{{ v }}" required>
+                            </div>
+                            <button type="submit" class="btn btn-success w-100">Submit</button>
+                        </form>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+  <div class="col-md-10 mt-5">
+                <div class="card shadow">
+                    <div class="card-header bg-secondary text-white">
+                        <h4 class="mb-0">Feedback Details</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered table-striped">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Feedback</th>
+
+                                    <th>Date</th>
+
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for i in val %}
+                                <tr>
+                                    <td>{{ i.Feedback }}</td>
+                                    <td>{{ i.Date }}</td>
+
+                                    <td>
+
+                                        <a href="/deletefeedback/{{ i.id }}" class="btn btn-danger btn-sm">Delete</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+
+                                <!-- Repeat similar rows for more expense details -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+{% endblock %}
